@@ -3,31 +3,56 @@ package edu.neu.csye6200;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author nexflare
+ *
+ */
 public class Item {
   private Double price;
   private String name;
 
+
+  /**
+   * 
+   * @param name
+   * @param price
+   */
   Item(String name, Double price) {
     this.name = name;
     this.price = price;
   }
 
+  /**
+   * 
+   * @return
+   */
   public Double getPrice() {
     return price;
   }
 
 
+  /**
+   * 
+   * @return
+   */
   public String getName() {
     return name;
   }
 
 
+  /**
+   * @author nexflare
+   */
   public String toString() {
     String itemString = getName() + " " + getPrice().toString();
     return itemString;
   }
 
 
+  /**
+   * @author nexflare
+   */
   public static void demo() {
     List<Item> cartItems = new ArrayList<Item>();
     Item oil = new Item("Oil", 2.0);
@@ -47,6 +72,10 @@ public class Item {
     useCheckout(cartItems);
   }
 
+  /**
+   * 
+   * @param items
+   */
   public static void useSillyCheckout(List<Item> items) {
     Cart myCart = new Cart(20);
     for (Item item : items) {
@@ -62,6 +91,10 @@ public class Item {
 
   }
 
+  /**
+   * 
+   * @param items
+   */
   public static void useCheckout(List<Item> items) {
     Cart myCart = new Cart(20);
     for (Item item : items) {
