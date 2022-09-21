@@ -3,9 +3,7 @@ package edu.neu.csye6200;
 import java.text.DecimalFormat;
 
 /**
- * 
  * @author nexflare
- *
  */
 public class Cart {
   private double myCash;
@@ -14,7 +12,6 @@ public class Cart {
   private static final DecimalFormat df = new DecimalFormat("0.00");
 
   /**
-   * 
    * @param cash
    */
   Cart(int cash) {
@@ -24,7 +21,6 @@ public class Cart {
 
 
   /**
-   * 
    * @param cash
    * @param price
    * @param total
@@ -33,37 +29,32 @@ public class Cart {
   public void sillyCheckout(double cash, double price, double total, double change) {
     this.myTotal = total + price;
     this.myChange = change - price;
-
   }
 
   /**
-   * 
-   * @return
+   * @return the value of myCash
    */
   public double getMyCash() {
     return myCash;
   }
 
   /**
-   * 
-   * @return
+   * @return the value of myTotal
    */
   public double getMyTotal() {
     return myTotal;
   }
 
   /**
-   * 
-   * @return
+   * @return the value of myChange
    */
   public double getMyChange() {
     return myChange;
   }
 
   /**
-   * 
    * @param myItem
-   * @return
+   * @return the change left with the user
    */
   public double checkout(Item myItem) {
     this.myTotal += myItem.getPrice();
@@ -72,10 +63,9 @@ public class Cart {
   }
 
   /**
-   * 
    * @param myCart
    * @param myItem
-   * @return
+   * @return the change left with the user
    */
   public double checkout(Cart myCart, Item myItem) {
     myCart.myChange -= myItem.getPrice();
@@ -84,7 +74,7 @@ public class Cart {
   }
 
   /**
-   * @return String
+   * @return the final values of cash, total and change
    */
   public String toString() {
     StringBuilder str = new StringBuilder("");
