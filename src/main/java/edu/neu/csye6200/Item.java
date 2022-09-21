@@ -7,22 +7,20 @@ import java.util.List;
  * @author nexflare
  */
 public class Item {
+  /**
+   * default price of item
+   */
   private Double price;
+  /**
+   * default name of item
+   */
   private String name;
-
-  public static final double OIL_PRICE = 2.0;
-  public static final double CHICKEN_PRICE = 5.6;
-  public static final double SPICES_PRICE = 3.0;
-  public static final double MILK_PRICE = 2.3;
-  public static final double PIZZA_PRICE = 1.29;
-  public static final double CHOCLATE_PRICE = 4.0;
-  public static final int INITAL_CHANGE = 20;
 
   /**
    * @param itemName
    * @param itemPrice
    */
-  Item(String itemName, Double itemPrice) {
+  Item(final String itemName, final Double itemPrice) {
     this.name = itemName;
     this.price = itemPrice;
   }
@@ -57,12 +55,12 @@ public class Item {
    */
   public static void demo() {
     List<Item> cartItems = new ArrayList<Item>();
-    Item oil = new Item("Oil", OIL_PRICE);
-    Item chicken = new Item("Chicken", CHICKEN_PRICE);
-    Item spices = new Item("Spices", SPICES_PRICE);
-    Item milk = new Item("Milk", MILK_PRICE);
-    Item choclate = new Item("Choclate", CHOCLATE_PRICE);
-    Item pizza = new Item("Pizza", PIZZA_PRICE);
+    Item oil = new Item("Oil", Constants.OIL_PRICE);
+    Item chicken = new Item("Chicken", Constants.CHICKEN_PRICE);
+    Item spices = new Item("Spices", Constants.SPICES_PRICE);
+    Item milk = new Item("Milk", Constants.MILK_PRICE);
+    Item choclate = new Item("Choclate", Constants.CHOCLATE_PRICE);
+    Item pizza = new Item("Pizza", Constants.PIZZA_PRICE);
     cartItems.add(oil);
     cartItems.add(chicken);
     cartItems.add(spices);
@@ -77,11 +75,11 @@ public class Item {
   /**
    * @param items
    */
-  public static void useSillyCheckout(List<Item> items) {
-    Cart myCart = new Cart(INITAL_CHANGE);
+  public static void useSillyCheckout(final List<Item> items) {
+    Cart myCart = new Cart(Constants.INITAL_CHANGE);
     for (Item item : items) {
-      myCart.sillyCheckout(myCart.getMyCash(), item.getPrice(), myCart.getMyTotal(),
-          myCart.getMyChange());
+      myCart.sillyCheckout(myCart.getMyCash(), item.getPrice(),
+          myCart.getMyTotal(), myCart.getMyChange());
     }
     StringBuilder str = new StringBuilder("");
     for (Item item : items) {
@@ -95,8 +93,8 @@ public class Item {
   /**
    * @param items
    */
-  public static void useCheckout(List<Item> items) {
-    Cart myCart = new Cart(INITAL_CHANGE);
+  public static void useCheckout(final List<Item> items) {
+    Cart myCart = new Cart(Constants.INITAL_CHANGE);
     for (Item item : items) {
       myCart.checkout(myCart, item);
     }

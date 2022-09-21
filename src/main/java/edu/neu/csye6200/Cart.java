@@ -6,15 +6,28 @@ import java.text.DecimalFormat;
  * @author nexflare
  */
 public class Cart {
+  /**
+   * myCash is the inital cash user gives in the constructor
+   */
   private double myCash;
+  /*
+   * myTotal is the total value of cart during checkout
+   */
   private double myTotal;
+  /**
+   * myChange is final change user will get after checkout
+   */
   private double myChange;
-  private static final DecimalFormat df = new DecimalFormat("0.00");
+  /**
+   * decimal formatter to get only 2 values after a decimal
+   */
+  private static final DecimalFormat decimalFormatter =
+      new DecimalFormat("0.00");
 
   /**
    * @param cash
    */
-  Cart(int cash) {
+  Cart(final int cash) {
     this.myCash = cash;
     this.myChange = cash;
   }
@@ -26,7 +39,8 @@ public class Cart {
    * @param total
    * @param change
    */
-  public void sillyCheckout(double cash, double price, double total, double change) {
+  public void sillyCheckout(final double cash, final double price,
+      final double total, double change) {
     this.myTotal = total + price;
     this.myChange = change - price;
   }
@@ -56,7 +70,7 @@ public class Cart {
    * @param myItem
    * @return the change left with the user
    */
-  public double checkout(Item myItem) {
+  public double checkout(final Item myItem) {
     this.myTotal += myItem.getPrice();
     this.myChange -= myItem.getPrice();
     return this.myChange;
@@ -67,7 +81,7 @@ public class Cart {
    * @param myItem
    * @return the change left with the user
    */
-  public double checkout(Cart myCart, Item myItem) {
+  public double checkout(final Cart myCart, final Item myItem) {
     myCart.myChange -= myItem.getPrice();
     myCart.myTotal += myItem.getPrice();
     return myCart.myChange;
@@ -78,11 +92,14 @@ public class Cart {
    */
   public String toString() {
     StringBuilder str = new StringBuilder("");
-    str.append("Cash given = " + String.valueOf(df.format(myCash)));
+    str.append(
+        "Cash given = " + String.valueOf(decimalFormatter.format(myCash)));
     str.append("/n");
-    str.append("Total Cost = " + String.valueOf(df.format(this.myTotal)));
+    str.append("Total Cost = "
+        + String.valueOf(decimalFormatter.format(this.myTotal)));
     str.append("/n");
-    str.append("Change = " + String.valueOf(df.format(this.myChange)));
+    str.append(
+        "Change = " + String.valueOf(decimalFormatter.format(this.myChange)));
     return str.toString();
   }
 }
