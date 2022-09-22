@@ -44,10 +44,10 @@ public class Cart {
    */
   public void sillyCheckout(final double cash, final double price,
       final double total, final double change) {
-    double _total = total + price * Constants.HUNDRED;
-    double _change = change - price * Constants.HUNDRED;
-    System.out.println("Total = " + DF.format(_total / Constants.HUNDRED)
-        + " Change = " + DF.format(_change / Constants.HUNDRED));
+    double totalVal = total + price * Constants.HUNDRED;
+    double changeVal = change - price * Constants.HUNDRED;
+    System.out.println("Total = " + DF.format(totalVal / Constants.HUNDRED)
+        + " Change = " + DF.format(changeVal / Constants.HUNDRED));
   }
 
   /**
@@ -98,14 +98,14 @@ public class Cart {
    */
   public String toString() {
     StringBuilder str = new StringBuilder("");
-    double _myCash = (double) this.myCash / Constants.HUNDRED;
-    double _myTotal = (double) this.myTotal / Constants.HUNDRED;
-    double _myChange = (double) this.myChange / Constants.HUNDRED;
-    str.append("Cash given = " + String.valueOf(DF.format(_myCash)));
+    double cash = (double) this.myCash / Constants.HUNDRED;
+    double total = (double) this.myTotal / Constants.HUNDRED;
+    double change = (double) this.myChange / Constants.HUNDRED;
+    str.append("Cash given = " + String.valueOf(DF.format(cash)));
     str.append("\n");
-    str.append("Total Cost = " + String.valueOf(DF.format(_myTotal)));
+    str.append("Total Cost = " + String.valueOf(DF.format(total)));
     str.append("\n");
-    str.append("Change = " + String.valueOf(DF.format(_myChange)));
+    str.append("Change = " + String.valueOf(DF.format(change)));
     return str.toString();
   }
 }
