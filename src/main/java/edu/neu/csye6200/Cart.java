@@ -9,17 +9,17 @@ public class Cart {
   /**
    * myCash is the initial cash user gives in the constructor.
    */
-  private double myCash;
+  private int myCash;
 
   /**
    * myTotal is the total value of cart during checkout.
    */
-  private double myTotal;
+  private int myTotal;
 
   /**
    * myChange is final change user will get after checkout.
    */
-  private double myChange;
+  private int myChange;
 
 
   /**
@@ -31,8 +31,8 @@ public class Cart {
    * @param cash
    */
   Cart(final int cash) {
-    this.myCash = cash;
-    this.myChange = cash;
+    this.myCash = cash * 100;
+    this.myChange = cash * 100;
   }
 
 
@@ -42,30 +42,32 @@ public class Cart {
    * @param total
    * @param change
    */
-  public void sillyCheckout(final double cash, final double price,
-      final double total, final double change) {
-    this.myTotal = total + price;
-    this.myChange = change - price;
+  public void sillyCheckout(final double cash, final double price, double total,
+      double change) {
+    total += price * 100;
+    change -= price * 100;
+    System.out.println("Total = " + DF.format(total / 100) + " Change = "
+        + DF.format(change / 100));
   }
 
   /**
    * @return the value of myCash
    */
-  public double getMyCash() {
+  public int getMyCash() {
     return myCash;
   }
 
   /**
    * @return the value of myTotal
    */
-  public double getMyTotal() {
+  public int getMyTotal() {
     return myTotal;
   }
 
   /**
    * @return the value of myChange
    */
-  public double getMyChange() {
+  public int getMyChange() {
     return myChange;
   }
 
@@ -74,8 +76,8 @@ public class Cart {
    * @return the change left with the user
    */
   public double checkout(final Item myItem) {
-    this.myTotal += myItem.getPrice();
-    this.myChange -= myItem.getPrice();
+    this.myTotal += (myItem.getPrice() * 100);
+    this.myChange -= (myItem.getPrice() * 100);
     return this.myChange;
   }
 
@@ -85,9 +87,10 @@ public class Cart {
    * @return the change left with the user
    */
   public double checkout(final Cart myCart, final Item myItem) {
-    myCart.myChange -= myItem.getPrice();
-    myCart.myTotal += myItem.getPrice();
-    return myCart.myChange;
+    myCart.myChange -= (myItem.getPrice() * 100);
+    myCart.myTotal += (myItem.getPrice() * 100);
+    double change = ((double) myCart.myChange) / 100;
+    return change;
   }
 
   /**
@@ -95,11 +98,14 @@ public class Cart {
    */
   public String toString() {
     StringBuilder str = new StringBuilder("");
+    double myCash = (double) this.myCash / 100;
+    double myTotal = (double) this.myTotal / 100;
+    double myChange = (double) this.myChange / 100;
     str.append("Cash given = " + String.valueOf(DF.format(myCash)));
-    str.append("/n");
-    str.append("Total Cost = " + String.valueOf(DF.format(this.myTotal)));
-    str.append("/n");
-    str.append("Change = " + String.valueOf(DF.format(this.myChange)));
+    str.append("\n");
+    str.append("Total Cost = " + String.valueOf(DF.format(myTotal)));
+    str.append("\n");
+    str.append("Change = " + String.valueOf(DF.format(myChange)));
     return str.toString();
   }
 }

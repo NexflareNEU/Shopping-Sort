@@ -69,6 +69,7 @@ public class Item {
     cartItems.add(choclate);
 
     useSillyCheckout(cartItems);
+    System.out.println("\n\n\n\n");
     useCheckout(cartItems);
   }
 
@@ -78,10 +79,14 @@ public class Item {
   public static void useSillyCheckout(final List<Item> items) {
     Cart myCart = new Cart(Constants.INITAL_CHANGE);
     for (Item item : items) {
+      System.out.println("Silly checkout " + item.name);
       myCart.sillyCheckout(myCart.getMyCash(), item.getPrice(),
-          myCart.getMyTotal(), myCart.getMyChange());
+          (double) myCart.getMyTotal(), (double) myCart.getMyChange());
     }
     StringBuilder str = new StringBuilder("");
+
+    System.out.println("\n");
+    System.out.println("SILLY CHECKOUT BILL RECEIPT\n");
     for (Item item : items) {
       str.append(item.toString() + "\n");
     }
@@ -99,6 +104,7 @@ public class Item {
       myCart.checkout(myCart, item);
     }
     StringBuilder str = new StringBuilder("");
+    System.out.println("CHECKOUT BILL RECEIPT\n");
     for (Item item : items) {
       str.append(item.toString() + "\n");
     }
