@@ -3,7 +3,7 @@ package edu.neu.csye6200;
 /**
  * @author SaiAkhil
  */
-final public class Driver {
+final class Driver {
 
   private Driver() {
 
