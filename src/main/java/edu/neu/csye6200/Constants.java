@@ -3,7 +3,7 @@ package edu.neu.csye6200;
 /**
  * @author nexflare
  */
-public class Constants {
+final public class Constants {
   private Constants() {
 
   }

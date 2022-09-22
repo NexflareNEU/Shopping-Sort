@@ -10,14 +10,18 @@ public class Cart {
    * myCash is the initial cash user gives in the constructor.
    */
   private double myCash;
-  /*
+
+  /**
    * myTotal is the total value of cart during checkout.
    */
   private double myTotal;
+
   /**
    * myChange is final change user will get after checkout.
    */
   private double myChange;
+
+
   /**
    * decimal formatter to get only 2 values after a decimal.
    */
