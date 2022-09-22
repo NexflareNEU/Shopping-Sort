@@ -7,19 +7,19 @@ import java.text.DecimalFormat;
  */
 public class Cart {
   /**
-   * myCash is the inital cash user gives in the constructor
+   * myCash is the initial cash user gives in the constructor.
    */
   private double myCash;
   /*
-   * myTotal is the total value of cart during checkout
+   * myTotal is the total value of cart during checkout.
    */
   private double myTotal;
   /**
-   * myChange is final change user will get after checkout
+   * myChange is final change user will get after checkout.
    */
   private double myChange;
   /**
-   * decimal formatter to get only 2 values after a decimal
+   * decimal formatter to get only 2 values after a decimal.
    */
   private static final DecimalFormat decimalFormatter =
       new DecimalFormat("0.00");
@@ -40,7 +40,7 @@ public class Cart {
    * @param change
    */
   public void sillyCheckout(final double cash, final double price,
-      final double total, double change) {
+      final double total, final double change) {
     this.myTotal = total + price;
     this.myChange = change - price;
   }
