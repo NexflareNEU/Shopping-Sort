@@ -21,8 +21,7 @@ public class Cart {
   /**
    * decimal formatter to get only 2 values after a decimal.
    */
-  private static final DecimalFormat decimalFormatter =
-      new DecimalFormat("0.00");
+  private static final DecimalFormat DF = new DecimalFormat("0.00");
 
   /**
    * @param cash
@@ -92,14 +91,11 @@ public class Cart {
    */
   public String toString() {
     StringBuilder str = new StringBuilder("");
-    str.append(
-        "Cash given = " + String.valueOf(decimalFormatter.format(myCash)));
+    str.append("Cash given = " + String.valueOf(DF.format(myCash)));
     str.append("/n");
-    str.append("Total Cost = "
-        + String.valueOf(decimalFormatter.format(this.myTotal)));
+    str.append("Total Cost = " + String.valueOf(DF.format(this.myTotal)));
     str.append("/n");
-    str.append(
-        "Change = " + String.valueOf(decimalFormatter.format(this.myChange)));
+    str.append("Change = " + String.valueOf(DF.format(this.myChange)));
     return str.toString();
   }
 }

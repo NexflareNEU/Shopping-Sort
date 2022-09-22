@@ -5,12 +5,14 @@ package edu.neu.csye6200;
  */
 public class Driver {
 
-  private Driver() {}
+  private Driver() {
+
+  }
 
   /**
    * @param args
    */
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     System.out
         .println("============Main Execution Start===================\n\n");
 
