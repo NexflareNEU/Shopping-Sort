@@ -8,11 +8,11 @@ import java.util.List;
  */
 public class Item {
   /**
-   * default price of item
+   * default price of item.
    */
   private Double price;
   /**
-   * default name of item
+   * default name of item.
    */
   private String name;
 

@@ -37,4 +37,6 @@ public final class Constants {
    */
   public static final int INITAL_CHANGE = 20;
 
+  public static final int HUNDRED = 100;
+
 }

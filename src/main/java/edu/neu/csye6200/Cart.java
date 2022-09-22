@@ -31,8 +31,8 @@ public class Cart {
    * @param cash
    */
   Cart(final int cash) {
-    this.myCash = cash * 100;
-    this.myChange = cash * 100;
+    this.myCash = cash * Constants.HUNDRED;
+    this.myChange = cash * Constants.HUNDRED;
   }
 
 
@@ -42,12 +42,12 @@ public class Cart {
    * @param total
    * @param change
    */
-  public void sillyCheckout(final double cash, final double price, double total,
-      double change) {
-    total += price * 100;
-    change -= price * 100;
-    System.out.println("Total = " + DF.format(total / 100) + " Change = "
-        + DF.format(change / 100));
+  public void sillyCheckout(final double cash, final double price,
+      final double total, final double change) {
+    double _total = total + price * Constants.HUNDRED;
+    double _change = change - price * Constants.HUNDRED;
+    System.out.println("Total = " + DF.format(_total / Constants.HUNDRED)
+        + " Change = " + DF.format(_change / Constants.HUNDRED));
   }
 
   /**
@@ -76,8 +76,8 @@ public class Cart {
    * @return the change left with the user
    */
   public double checkout(final Item myItem) {
-    this.myTotal += (myItem.getPrice() * 100);
-    this.myChange -= (myItem.getPrice() * 100);
+    this.myTotal += (myItem.getPrice() * Constants.HUNDRED);
+    this.myChange -= (myItem.getPrice() * Constants.HUNDRED);
     return this.myChange;
   }
 
@@ -87,9 +87,9 @@ public class Cart {
    * @return the change left with the user
    */
   public double checkout(final Cart myCart, final Item myItem) {
-    myCart.myChange -= (myItem.getPrice() * 100);
-    myCart.myTotal += (myItem.getPrice() * 100);
-    double change = ((double) myCart.myChange) / 100;
+    myCart.myChange -= (myItem.getPrice() * Constants.HUNDRED);
+    myCart.myTotal += (myItem.getPrice() * Constants.HUNDRED);
+    double change = ((double) myCart.myChange) / Constants.HUNDRED;
     return change;
   }
 
@@ -98,14 +98,14 @@ public class Cart {
    */
   public String toString() {
     StringBuilder str = new StringBuilder("");
-    double myCash = (double) this.myCash / 100;
-    double myTotal = (double) this.myTotal / 100;
-    double myChange = (double) this.myChange / 100;
-    str.append("Cash given = " + String.valueOf(DF.format(myCash)));
+    double _myCash = (double) this.myCash / Constants.HUNDRED;
+    double _myTotal = (double) this.myTotal / Constants.HUNDRED;
+    double _myChange = (double) this.myChange / Constants.HUNDRED;
+    str.append("Cash given = " + String.valueOf(DF.format(_myCash)));
     str.append("\n");
-    str.append("Total Cost = " + String.valueOf(DF.format(myTotal)));
+    str.append("Total Cost = " + String.valueOf(DF.format(_myTotal)));
     str.append("\n");
-    str.append("Change = " + String.valueOf(DF.format(myChange)));
+    str.append("Change = " + String.valueOf(DF.format(_myChange)));
     return str.toString();
   }
 }
