@@ -1,6 +1,9 @@
 package edu.neu.csye6200;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author nexflare
@@ -21,6 +24,8 @@ public class Cart {
    */
   private int myChange;
 
+  private List<Item> shoppingBag;
+
 
   /**
    * decimal formatter to get only 2 values after a decimal.
@@ -33,6 +38,7 @@ public class Cart {
   Cart(final int cash) {
     this.myCash = cash * Constants.HUNDRED;
     this.myChange = cash * Constants.HUNDRED;
+    this.shoppingBag = new ArrayList<>();
   }
 
 
@@ -86,12 +92,28 @@ public class Cart {
    * @param myItem
    * @return the change left with the user
    */
-  public double checkout(final Cart myCart, final Item myItem) {
+  public double checkoutCart(final Cart myCart, final Item myItem) {
     myCart.myChange -= (myItem.getPrice() * Constants.HUNDRED);
     myCart.myTotal += (myItem.getPrice() * Constants.HUNDRED);
     double change = ((double) myCart.myChange) / Constants.HUNDRED;
     return change;
   }
+
+  public void addItem(Item item) {
+    shoppingBag.add(item);
+  }
+
+  public void checkout() {
+    System.out.println("Hey CSYE6000!!");
+    System.out.println("Here is your bill :)");
+    for (int i = 0; i < this.shoppingBag.size(); i++) {
+      checkoutCart(this, this.shoppingBag.get(i));
+      System.out.println(this.shoppingBag.get(i).toString());
+    }
+    // System.out.println(String.valueOf(this.myChange));
+    System.out.println(this.toString());
+  }
+
 
   /**
    * @return the final values of cash, total and change
@@ -102,10 +124,59 @@ public class Cart {
     double total = (double) this.myTotal / Constants.HUNDRED;
     double change = (double) this.myChange / Constants.HUNDRED;
     str.append("Cash given = " + String.valueOf(DF.format(cash)));
-    str.append("\n");
+    str.append(" ");
     str.append("Total Cost = " + String.valueOf(DF.format(total)));
-    str.append("\n");
+    str.append(" ");
     str.append("Change = " + String.valueOf(DF.format(change)));
     return str.toString();
+  }
+
+
+  public void sortByName() {
+    // shoppingBag.sort(new SortByName());
+    Collections.sort(shoppingBag, new SortByName());
+    System.out.println("Sort by Name");
+    for (int i = 0; i < shoppingBag.size(); i++) {
+      System.out.println(shoppingBag.get(i).toString());
+    }
+    System.out.println("\n \n");
+  }
+
+  public void sortById() {
+    System.out.println("Sort by Id");
+    Collections.sort(shoppingBag, new SortById());
+    for (int i = 0; i < shoppingBag.size(); i++) {
+      System.out.println(shoppingBag.get(i).toString());
+    }
+    System.out.println("\n \n");
+  }
+
+  public void sortByPrice() {
+    System.out.println("Sort by Price");
+    Collections.sort(shoppingBag, new SortByPrice());
+    for (int i = 0; i < shoppingBag.size(); i++) {
+      System.out.println(shoppingBag.get(i).toString());
+    }
+    System.out.println("\n \n");
+  }
+
+  public static void demo() {
+
+    Item milk = new Item("#2", "Milk", 2.49);
+    Item Bread = new Item("#4", "Bread", 1.49);
+    Item OJ = new Item("#3", "OJ", 3.49);
+    Item Candy = new Item("#1", "Candy", 0.99);
+
+    Cart cartObj = new Cart(20);
+    cartObj.addItem(milk);
+    cartObj.addItem(Bread);
+    cartObj.addItem(OJ);
+    cartObj.addItem(Candy);
+    cartObj.checkout();
+    System.out.println("\n \n");
+    cartObj.sortByName();
+    cartObj.sortById();
+    cartObj.sortByPrice();
+
   }
 }

@@ -1,12 +1,13 @@
 package edu.neu.csye6200;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author nexflare
  */
 public class Item {
+
+  private String id;
   /**
    * default price of item.
    */
@@ -20,7 +21,14 @@ public class Item {
    * @param itemName
    * @param itemPrice
    */
-  Item(final String itemName, final Double itemPrice) {
+  // Item(final String itemName, final Double itemPrice) {
+  // this.id = "#90";
+  // this.name = itemName;
+  // this.price = itemPrice;
+  // }
+
+  Item(final String _id, final String itemName, final Double itemPrice) {
+    this.id = _id;
     this.name = itemName;
     this.price = itemPrice;
   }
@@ -40,12 +48,15 @@ public class Item {
     return name;
   }
 
+  public String getId() {
+    return id;
+  }
 
   /**
    * @return get item name and price as a string
    */
   public String toString() {
-    String itemString = getName() + " " + getPrice().toString();
+    String itemString = getId() + " " + getName() + " " + getPrice().toString();
     return itemString;
   }
 
@@ -54,23 +65,23 @@ public class Item {
    * @author nexflare
    */
   public static void demo() {
-    List<Item> cartItems = new ArrayList<Item>();
-    Item oil = new Item("Oil", Constants.OIL_PRICE);
-    Item chicken = new Item("Chicken", Constants.CHICKEN_PRICE);
-    Item spices = new Item("Spices", Constants.SPICES_PRICE);
-    Item milk = new Item("Milk", Constants.MILK_PRICE);
-    Item choclate = new Item("Choclate", Constants.CHOCLATE_PRICE);
-    Item pizza = new Item("Pizza", Constants.PIZZA_PRICE);
-    cartItems.add(oil);
-    cartItems.add(chicken);
-    cartItems.add(spices);
-    cartItems.add(milk);
-    cartItems.add(pizza);
-    cartItems.add(choclate);
-
-    useSillyCheckout(cartItems);
-    System.out.println("\n\n\n\n");
-    useCheckout(cartItems);
+    // List<Item> cartItems = new ArrayList<Item>();
+    // Item oil = new Item("Oil", Constants.OIL_PRICE);
+    // Item chicken = new Item("Chicken", Constants.CHICKEN_PRICE);
+    // Item spices = new Item("Spices", Constants.SPICES_PRICE);
+    // Item milk = new Item("Milk", Constants.MILK_PRICE);
+    // Item choclate = new Item("Choclate", Constants.CHOCLATE_PRICE);
+    // Item pizza = new Item("Pizza", Constants.PIZZA_PRICE);
+    // cartItems.add(oil);
+    // cartItems.add(chicken);
+    // cartItems.add(spices);
+    // cartItems.add(milk);
+    // cartItems.add(pizza);
+    // cartItems.add(choclate);
+    //
+    // useSillyCheckout(cartItems);
+    // System.out.println("\n\n\n\n");
+    // useCheckout(cartItems);
   }
 
   /**
@@ -99,16 +110,16 @@ public class Item {
    * @param items
    */
   public static void useCheckout(final List<Item> items) {
-    Cart myCart = new Cart(Constants.INITAL_CHANGE);
-    for (Item item : items) {
-      myCart.checkout(myCart, item);
-    }
-    StringBuilder str = new StringBuilder("");
-    System.out.println("CHECKOUT BILL RECEIPT\n");
-    for (Item item : items) {
-      str.append(item.toString() + "\n");
-    }
-    System.out.print(str.toString());
-    System.out.println(myCart.toString());
+    // Cart myCart = new Cart(Constants.INITAL_CHANGE);
+    // for (Item item : items) {
+    // myCart.checkout(myCart, item);
+    // }
+    // StringBuilder str = new StringBuilder("");
+    // System.out.println("CHECKOUT BILL RECEIPT\n");
+    // for (Item item : items) {
+    // str.append(item.toString() + "\n");
+    // }
+    // System.out.print(str.toString());
+    // System.out.println(myCart.toString());
   }
 }
